@@ -10,7 +10,7 @@ char* itoa(int num) {
     return str;
 }
 
-char* name_crafting(char *number) {
+FILE* name_crafting(char *number) {
     int next_nbr = 0;
     
     next_nbr = atoi(number) - 1;
@@ -28,14 +28,28 @@ char* name_crafting(char *number) {
     return next_file;
 }
 
-void copy(char *replace, FILE *input_file, char *output_file) {
-    printf("%s\n", replace);
-    char * buffer = (char *) malloc( MAX_LENGTH );
+void copy(char *replace, FILE *input_file, FILE *output_file, int f) {
 
-    while(!feof(input_file))
-    {
-        fgets(buffer, MAX_LENGTH, input_file);
-        fprintf(output_file, buffer);
+    rewind(input_file);
+    char buffer[MAX_LENGTH];
+
+    int skip = 0;
+    //morceaux a mettre :"    int i =" + " " + itoa(f - 1) + ";\n"
+    char *tmp = (char*)malloc((strlen(itoa(f -1)) + 14)*sizeof(char));
+    strcat(tmp, "    int i =");
+    strcat(tmp, " ");
+    strcat(tmp, itoa(f-1));
+    strcat(tmp, ";\n");
+    while(fgets(buffer, MAX_LENGTH, input_file) != NULL) {
+        if (strstr(buffer, replace))
+        {
+            printf("buffer  = %s\n", buffer);
+            printf("replace = %s\n", replace);
+            printf("tmp = %s\n", tmp);
+            fputs(tmp, output_file);
+        }
+        else
+            fputs(buffer, output_file);
     }
 }
 
@@ -44,6 +58,7 @@ int main() {
     FILE *input_file;
     input_file = fopen(__FILE__, "r");
     int i = 567;
+    int f = i;
     if (i < 1)
         return 0;
     
@@ -73,13 +88,11 @@ int main() {
                     j++;
                 }
                 number[k - 2] = '\0';
-                copy(buffer, input_file, name_crafting(number));
+                copy(buffer, input_file, name_crafting(number), f);
                 break ;
             }
     }
     
-
-
     free(search);
     free(buffer);
 
