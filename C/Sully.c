@@ -34,7 +34,7 @@ void copy(char *replace, FILE *input_file, FILE *output_file, int f) {
     char buffer[MAX_LENGTH];
 
     int skip = 0;
-    //morceaux a mettre :"    int i =" + " " + itoa(f - 1) + ";\n"
+
     char *tmp = (char*)malloc((strlen(itoa(f -1)) + 14)*sizeof(char));
     strcat(tmp, "    int i =");
     strcat(tmp, " ");
@@ -43,14 +43,12 @@ void copy(char *replace, FILE *input_file, FILE *output_file, int f) {
     while(fgets(buffer, MAX_LENGTH, input_file) != NULL) {
         if (strstr(buffer, replace))
         {
-            printf("buffer  = %s\n", buffer);
-            printf("replace = %s\n", replace);
-            printf("tmp = %s\n", tmp);
             fputs(tmp, output_file);
         }
         else
             fputs(buffer, output_file);
     }
+    free(tmp);
 }
 
 int main() {
