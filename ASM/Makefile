@@ -3,7 +3,7 @@ ASM=nasm
 ASMFLAGS=-f elf64
 CC=gcc
 CFLAGS=-no-pie
-TARGET=Grace
+TARGET=Sully
 SOURCES=$(TARGET).s
 
 # Règles
