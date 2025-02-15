@@ -56,7 +56,7 @@ int main() {
     FILE *input_file;
     input_file = fopen(__FILE__, "r");
     int i = 567;
-    int f = i;
+    // int f = i;
     if (i < 1)
         return 0;
     
@@ -86,7 +86,7 @@ int main() {
                     j++;
                 }
                 number[k - 2] = '\0';
-                copy(buffer, input_file, name_crafting(number), f);
+                copy(buffer, input_file, name_crafting(number), i);
                 break ;
             }
     }
