@@ -60,8 +60,9 @@ int main() {
 
     FILE *input_file;
     input_file = fopen(__FILE__, "r");
+    if(input_file == NULL)
+        return 1;
     int i = 567;
-    // int f = i;
     if (i < 0)
         return 0;
     
