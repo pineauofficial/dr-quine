@@ -25,7 +25,7 @@ main:
     ; check et x--
     mov eax, [x]
     dec eax
-    cmp eax, 0
+    cmp eax, -1
     jl end
     mov [x], eax
 
