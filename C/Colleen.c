@@ -18,5 +18,5 @@ int main() {
     fclose(input_file);
 
     result = autre_fonction_qui_add_les_variables_a_et_b(a, b);
-    return 0;
+    return result;
 }
