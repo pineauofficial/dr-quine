@@ -33,8 +33,6 @@ void copy(char *replace, FILE *input_file, FILE *output_file, int f) {
     rewind(input_file);
     char buffer[MAX_LENGTH];
 
-    int skip = 0;
-
     char *itoaed = itoa(f - 1);
     char *tmp = (char*)malloc((strlen(itoaed) + 15)*sizeof(char));
     free(itoaed);

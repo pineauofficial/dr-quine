@@ -3,7 +3,7 @@ ASM=nasm
 ASMFLAGS=-f elf64
 CC=gcc
 CFLAGS=-no-pie
-TARGET=Sully
+TARGET=Colleen
 SOURCES=$(TARGET).s
 
 # Règles
